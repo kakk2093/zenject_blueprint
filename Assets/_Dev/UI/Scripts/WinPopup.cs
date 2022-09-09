@@ -71,7 +71,6 @@ public class WinPopup : Popup
 
     private IEnumerator MoneyIncreasCorutine()
     {
-
         _startValue = _moneyService.OnLevelMoneyCount;
         _endValue = _moneyService.FinalMoney;
         _animator.SetTrigger(Change);
@@ -92,6 +91,5 @@ public class WinPopup : Popup
             _finalMoneyText.text = value.ToString();
             yield return null;
         }
-
     }
 }
