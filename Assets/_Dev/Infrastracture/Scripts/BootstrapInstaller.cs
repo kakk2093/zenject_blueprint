@@ -27,7 +27,6 @@ public class BootstrapInstaller : MonoInstaller
     }
     private void BindSceneLoadService()
     {
-      //  Debug.Log("sceneLoader");
         Container
           .Bind<ISceneLoadService>()
           .FromComponentInNewPrefab(SceneLoadServicePrefab)

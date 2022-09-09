@@ -5,7 +5,6 @@ using Zenject;
 
 public class WinPopup : Popup
 {
-
     [Header("Links")]
     [SerializeField] private Button _continueButton;
     [SerializeField] private Text _finalMoneyText;
@@ -13,7 +12,6 @@ public class WinPopup : Popup
     [SerializeField] private AnimationCurve _addingCurve;
     [SerializeField] private Animator _animator;
     [SerializeField] private Animator _fMultAnimator;
-
 
     private static readonly int Change = Animator.StringToHash("Change");
     private static readonly int Scale = Animator.StringToHash("Scale");
@@ -23,7 +21,6 @@ public class WinPopup : Popup
     private ISceneLoadService _sceneLoadService;
     private IGamePlayService _gamePlayService;
     private IMoneyService _moneyService;
-
 
     [Inject]
     private void Construct(IGamePlayService gamePlayService, ISceneLoadService sceneLoadService, IMoneyService moneyService)
@@ -58,6 +55,7 @@ public class WinPopup : Popup
     {
         _gamePlayService.WinPopupShowEvent -= RefreshFinalMonye;
         _gamePlayService.WinPopupShowEvent -= ActivateContButton;
+        _continueButton?.onClick.RemoveListener(OnContinueButtonClick);
     }
 
     private void RefreshFinalMonye()

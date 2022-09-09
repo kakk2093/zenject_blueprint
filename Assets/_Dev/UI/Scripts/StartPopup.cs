@@ -18,7 +18,6 @@ public class StartPopup : Popup
     private void Awake()
     {
         _startGameButton?.onClick.AddListener(OnStartButtonClick);
-        Debug.Log("click");
     }
 
     private void OnDestroy()

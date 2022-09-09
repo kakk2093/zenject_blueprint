@@ -20,6 +20,11 @@ public class LosePopup : Popup
         _restartGameButton?.onClick.AddListener(OnRestartButtonClick);
     }
 
+    private void OnDestroy()
+    {
+        _restartGameButton?.onClick.RemoveListener(OnRestartButtonClick);
+    }
+
     private void OnRestartButtonClick()
     {
         _sceneLoadService.RestartScene();

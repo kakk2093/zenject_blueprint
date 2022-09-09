@@ -2,7 +2,6 @@ using System;
 
 public interface IGamePlayService
 {
-
     public event Action GameOverEvent;
     public event Action GameStartEvent;
     public event Action WinPopupShowEvent;
