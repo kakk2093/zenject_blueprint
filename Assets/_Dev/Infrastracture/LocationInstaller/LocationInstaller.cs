@@ -17,7 +17,7 @@ public class LocationInstaller : MonoInstaller
 
     private void BindPlayer()
     {
-         Player player = Container.InstantiatePrefabForComponent<Player>(_playerPrefab, _startPoint.position, Quaternion.identity, null);
+        Player player = Container.InstantiatePrefabForComponent<Player>(_playerPrefab, _startPoint.position, Quaternion.identity, null);
 
         Container.
             Bind<Player>().
