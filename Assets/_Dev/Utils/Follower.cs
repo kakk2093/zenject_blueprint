@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 
 public class Follower : MonoBehaviour
@@ -19,6 +20,13 @@ public class Follower : MonoBehaviour
     [SerializeField] private float _maxDeltaRot;
 
     private Transform _transform;
+
+
+    [Inject]
+    private void Construct(Player player)
+    {
+        _followTarget = player.transform;
+    }
 
     private void Awake()
     {

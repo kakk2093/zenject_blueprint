@@ -1,5 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 using UnityEngine;
+#if UNITY_IOS
+using UnityEngine.iOS;
+#endif
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -20,7 +23,9 @@ public class Taptic : MonoBehaviour {
                         return;
                 }
 #if UNITY_IOS
-                if (iPhone6s()) {
+                if (BelowiPhone6s()) {
+                        Handheld.Vibrate();
+                } else if (iPhone6s()) {
                         _PlayTaptic6s("warning");
                 } else {
                         _PlayTaptic("warning");
@@ -34,7 +39,9 @@ public class Taptic : MonoBehaviour {
                         return;
                 }
 #if UNITY_IOS
-                if (iPhone6s()) {
+                if (BelowiPhone6s()) {
+                        Handheld.Vibrate();
+                } else if (iPhone6s()) {
                         _PlayTaptic6s("failure");
                 } else {
                         _PlayTaptic("failure");
@@ -48,7 +55,9 @@ public class Taptic : MonoBehaviour {
                         return;
                 }
 #if UNITY_IOS
-                if (iPhone6s()) {
+                if (BelowiPhone6s()) {
+                        Handheld.Vibrate();
+                } else if (iPhone6s()) {
                         _PlayTaptic6s("success");
                 } else {
                         _PlayTaptic("success");
@@ -62,7 +71,9 @@ public class Taptic : MonoBehaviour {
                         return;
                 }
 #if UNITY_IOS
-                if (iPhone6s()) {
+                if (BelowiPhone6s()) {
+                        Handheld.Vibrate();
+                } else if (iPhone6s()) {
                         _PlayTaptic6s("light");
                 } else {
                         _PlayTaptic("light");
@@ -76,7 +87,9 @@ public class Taptic : MonoBehaviour {
                         return;
                 }
 #if UNITY_IOS
-                if (iPhone6s()) {
+                if (BelowiPhone6s()) {
+                        Handheld.Vibrate();
+                } else if (iPhone6s()) {
                         _PlayTaptic6s("medium");
                 } else {
                         _PlayTaptic("medium");
@@ -90,7 +103,9 @@ public class Taptic : MonoBehaviour {
                         return;
                 }
 #if UNITY_IOS
-                if (iPhone6s()) {
+                if (BelowiPhone6s()) {
+                        Handheld.Vibrate();
+                } else if (iPhone6s()) {
                         _PlayTaptic6s("heavy");
                 } else {
                         _PlayTaptic("heavy");
@@ -112,7 +127,9 @@ public class Taptic : MonoBehaviour {
                         return;
                 }
 #if UNITY_IOS
-                if (iPhone6s()) {
+                if (BelowiPhone6s()) {
+                        Handheld.Vibrate();
+                } else if (iPhone6s()) {
                         _PlayTaptic6s("medium");
                 } else {
                         _PlayTaptic("medium");
@@ -126,7 +143,9 @@ public class Taptic : MonoBehaviour {
                         return;
                 }
 #if UNITY_IOS
-                if (iPhone6s()) {
+                if (BelowiPhone6s()) {
+                        Handheld.Vibrate();
+                } else if (iPhone6s()) {
                         _PlayTaptic6s("selection");
                 } else {
                         _PlayTaptic("selection");
@@ -135,9 +154,20 @@ public class Taptic : MonoBehaviour {
                 AndroidTaptic.Haptic(HapticTypes.Selection);
 #endif
         }
-
+#if UNITY_IOS
         static bool iPhone6s() {
                 return SystemInfo.deviceModel == "iPhone8,1" || SystemInfo.deviceModel == "iPhone8,2";
         }
 
+
+        static bool BelowiPhone6s() {
+                if (Device.generation.ToString().Contains("iPad") || Device.generation.ToString().Contains("iPod")) {
+                        return true;
+                }
+                if (Device.generation == DeviceGeneration.iPhone || Device.generation == DeviceGeneration.iPhone3G || Device.generation == DeviceGeneration.iPhone3GS || Device.generation == DeviceGeneration.iPhone4 || Device.generation == DeviceGeneration.iPhone4S || Device.generation == DeviceGeneration.iPhone5 || Device.generation == DeviceGeneration.iPhone5S || Device.generation == DeviceGeneration.iPhone5C || Device.generation == DeviceGeneration.iPhone6 || Device.generation == DeviceGeneration.iPhone6Plus || Device.generation == DeviceGeneration.iPhoneSE1Gen) {
+                        return true;
+                }
+                return false;
+        }
+#endif
 }
