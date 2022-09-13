@@ -30,7 +30,6 @@ public class SaveValueService : MonoBehaviour, ISaveValueService
     public event Action<int> ChangeCoinsCountEvent;
     public event Action<int> ChangeSkinLevelEvent;
 
-   
     private void LoadAllValues()
     {
         LoadCoinsCount();

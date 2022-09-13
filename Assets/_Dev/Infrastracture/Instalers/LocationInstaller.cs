@@ -6,14 +6,13 @@ public class LocationInstaller : MonoInstaller
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private Transform _startPoint;
     [SerializeField] private TestFinisher _finisher;
-  
+
 
     public override void InstallBindings()
     {
         BindFinisher();
         BindPlayer();
     }
-
 
     private void BindPlayer()
     {
@@ -24,6 +23,7 @@ public class LocationInstaller : MonoInstaller
             FromInstance(player).AsSingle().
             NonLazy();
     }
+
     private void BindFinisher()
     {
         Container.
