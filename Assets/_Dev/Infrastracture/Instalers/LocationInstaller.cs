@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class LocationInstaller : MonoInstaller
 {
-    [SerializeField] private GameObject _playerPrefab;
+  //  [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private Transform _startPoint;
     [SerializeField] private TestFinisher _finisher;
+    [SerializeField] private Player _playerPrefab;
 
 
     public override void InstallBindings()
@@ -14,7 +15,7 @@ public class LocationInstaller : MonoInstaller
         BindPlayer();
     }
 
-    private void BindPlayer()
+  /*  private void BindPlayerFromSpawn()
     {
         Player player = Container.InstantiatePrefabForComponent<Player>(_playerPrefab, _startPoint.position, Quaternion.identity, null);
 
@@ -22,6 +23,15 @@ public class LocationInstaller : MonoInstaller
             Bind<Player>().
             FromInstance(player).AsSingle().
             NonLazy();
+    }
+  */
+
+    private void BindPlayer()
+    {
+        Container.
+         Bind<Player>().
+         FromInstance(_playerPrefab).AsSingle().
+         NonLazy();
     }
 
     private void BindFinisher()

@@ -20,6 +20,5 @@ public class CubeSpawner : MonoBehaviour
     {
         Cube cube = _cubeFactory.Create();
         cube.transform.position = new Vector3(0, 0, 20);
-
     }
 }

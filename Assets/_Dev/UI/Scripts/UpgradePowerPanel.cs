@@ -1,5 +1,3 @@
-using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 public class UpgradePowerPanel : UpgradePanel
@@ -12,7 +10,6 @@ public class UpgradePowerPanel : UpgradePanel
 
     private void Start()
     {//   SetCostByLevel(_saveValueService.PowerLevel);
-        // _upgradeButton.onClick.AddListener(() => UpgradeLevel());
         _upgradeButton.onClick.AddListener(UpgradeLevel);
         //  _saveValueService.PowerLevelChangeEvent += SetCostByLevel;
         RefreshView();
@@ -30,10 +27,7 @@ public class UpgradePowerPanel : UpgradePanel
         {
 
         }
-        //    _saveValueService.PowerLevel++;
     }
-
-
     protected override void RefreshView()
     {
         //   SetLevelText(_saveValueService.PowerLevel);
