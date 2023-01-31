@@ -1,10 +1,10 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 public class CoinCountViewer : MonoBehaviour
 {
-    [SerializeField] private Text _coinCountText;
+    [SerializeField] private TMP_Text _coinCountText;
     [SerializeField] private Animator _animator;
 
     private ISaveValueService _saveValueService;

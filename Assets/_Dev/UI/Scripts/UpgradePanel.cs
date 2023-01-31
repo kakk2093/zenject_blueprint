@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -6,8 +7,8 @@ public class UpgradePanel : MonoBehaviour
 {
     [SerializeField] private int[] _costValue;
     [SerializeField] protected Button _upgradeButton;
-    [SerializeField] private Text _costText;
-    [SerializeField] private Text _levelText;
+    [SerializeField] private TMP_Text _costText;
+    [SerializeField] private TMP_Text _levelText;
 
     protected int _costUpgradeUp;
 

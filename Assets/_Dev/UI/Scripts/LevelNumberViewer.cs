@@ -1,10 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
 public class LevelNumberViewer : MonoBehaviour
 {
-    [SerializeField] private Text _lvlText;
+    [SerializeField] private TMP_Text _lvlText;
 
     private ISaveValueService _saveValueService;
 
