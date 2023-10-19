@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -77,3 +78,4 @@ MonoBehaviour:
   SceneLoadServicePrefab: {fileID: 8619697513688546678, guid: 79ae153cc00c5934186e9951e9c6df71, type: 3}
   SaveValueService: {fileID: 2974282138856676112, guid: c0bfd7399bb2c8b43af13a05848380dc, type: 3}
   MoneyServicePrefab: {fileID: 291610128082648632, guid: 45880ce67d310ec40a99fb3cc93ecff7, type: 3}
+  SaveLoadServicePrefab: {fileID: 1917742978352258581, guid: eb2d5f4011c7c8341ba9aad62c5eae8b, type: 3}

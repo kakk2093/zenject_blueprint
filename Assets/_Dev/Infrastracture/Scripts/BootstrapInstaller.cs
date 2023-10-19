@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -7,6 +8,7 @@ public class BootstrapInstaller : MonoInstaller
     public SceneLoadService SceneLoadServicePrefab;
     public SaveValueService SaveValueService;
     public MoneyService MoneyServicePrefab;
+    public SaveLoadService SaveLoadServicePrefab;   
 
     public override void InstallBindings()
     {
@@ -14,6 +16,17 @@ public class BootstrapInstaller : MonoInstaller
         BindGamePlayService();
         BindSceneLoadService();
         BindMoneyService();
+        BindSaveLoadService();
+    }
+
+    private void BindSaveLoadService()
+    {
+        Container
+           .Bind<ISaveLoadService>()
+           .FromComponentInNewPrefab(SaveLoadServicePrefab)
+           .UnderTransform(transform)
+           .AsSingle()
+           .NonLazy();
     }
 
     private void BindGamePlayService()

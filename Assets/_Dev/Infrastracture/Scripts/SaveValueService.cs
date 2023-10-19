@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 public class SaveValueService : MonoBehaviour, ISaveValueService
 {
@@ -19,16 +20,16 @@ public class SaveValueService : MonoBehaviour, ISaveValueService
     private const string TrueLevelNumberSaveKey = "TrueLevel";
 
 
-    private const int DefaultCoinsCount = 0;
-    private const int DefaultOpenLevelNumber = 1;
-    private const int DefaultSkinLevel = 0;
-    private const float DefaultSkinProgresLevel = 0;
-    private const int DefaultTimeToCicleSkin = 0;
-    private const int DefaultTrueLevelNumber = 1;
-
-
     public event Action<int> ChangeCoinsCountEvent;
     public event Action<int> ChangeSkinLevelEvent;
+
+    private ISaveLoadService _saveLoadService;
+
+    [Inject]
+    private void Constrict(ISaveLoadService saveLoadService)
+    {
+        _saveLoadService = saveLoadService;
+    }
 
     private void LoadAllValues()
     {
@@ -62,13 +63,29 @@ public class SaveValueService : MonoBehaviour, ISaveValueService
 
     private void SaveIntValue(string SaveKey, int SaveValue)
     {
-        PlayerPrefs.SetInt(SaveKey, SaveValue);
-        PlayerPrefs.Save();
+        _saveLoadService.SaveInt(SaveKey, SaveValue);
     }
     private void SaveFloatValue(string saveKey, float saveValue)
     {
-        PlayerPrefs.SetFloat(saveKey, saveValue);
-        PlayerPrefs.Save();
+        _saveLoadService.SaveFloat(saveKey, saveValue);
+    }
+
+    private void SaveBoolValue(string saveKey, bool saveValue)
+    {
+        _saveLoadService.SaveBool(saveKey, saveValue);
+    }
+
+    private void LoadIntValue(string saveKey, int defaultValue)
+    {
+        _saveLoadService.LoadInt(saveKey, defaultValue);
+    }
+    private void LoadFloatValue(string saveKey, float defaultValue)
+    {
+        _saveLoadService.LoadFloat(saveKey, defaultValue);
+    }
+    private void LoadBoolValue(string saveKey, bool defaultValue)
+    {
+        _saveLoadService.LoadBool(saveKey, defaultValue);
     }
 
     #region PROPERTIES
@@ -186,50 +203,35 @@ public class SaveValueService : MonoBehaviour, ISaveValueService
     #region LOAD
     public void LoadTrueLevelNumber()
     {
-        if (PlayerPrefs.HasKey(TrueLevelNumberSaveKey))
-            TrueLevelNumber = PlayerPrefs.GetInt(TrueLevelNumberSaveKey);
-        else
-            TrueLevelNumber = DefaultTrueLevelNumber;
+
+        SaveIntValue(TrueLevelNumberSaveKey, 1);
     }
 
     public void LoadCoinsCount()
     {
-        if (PlayerPrefs.HasKey(CoinsCountSaveKey))
-            CoinsCount = PlayerPrefs.GetInt(CoinsCountSaveKey);
-        else
-            CoinsCount = DefaultCoinsCount;
+     
+        LoadIntValue(CoinsCountSaveKey, 100);
     }
 
     public void LoadSkinLevel()
     {
-        if (PlayerPrefs.HasKey(SkinLevelNumberSaveKey))
-            SkinLevel = PlayerPrefs.GetInt(SkinLevelNumberSaveKey);
-        else
-            SkinLevel = DefaultSkinLevel;
+        LoadIntValue(SkinLevelNumberSaveKey, 0);
     }
 
     public void LoadLevelNumber()
     {
-        if (PlayerPrefs.HasKey(LevelNumberSaveKey))
-            LevelNumber = PlayerPrefs.GetInt(LevelNumberSaveKey);
-        else
-            LevelNumber = DefaultOpenLevelNumber;
+        LoadIntValue(LevelNumberSaveKey, 0);
     }
 
     public void LoadTimeToCircleSkin()
     {
-        if (PlayerPrefs.HasKey(TimeToCicleSkinSaveKey))
-            TimeToCircleSkin = PlayerPrefs.GetInt(TimeToCicleSkinSaveKey);
-        else
-            TimeToCircleSkin = DefaultTimeToCicleSkin;
+        LoadIntValue(TimeToCicleSkinSaveKey, 0);
     }
 
     public void LoadOpenSkinProgres()
     {
-        if (PlayerPrefs.HasKey(SkinOpenProgresSaveKey))
-            SkinOpenProgres = PlayerPrefs.GetFloat(SkinOpenProgresSaveKey);
-        else
-            SkinOpenProgres = DefaultSkinProgresLevel;
+
+        LoadFloatValue(SkinOpenProgresSaveKey, 0);
     }
     #endregion
 

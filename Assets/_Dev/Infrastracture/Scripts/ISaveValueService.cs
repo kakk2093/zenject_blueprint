@@ -26,6 +26,4 @@ public interface ISaveValueService
     void SaveOpenSkinProgres();
     void LoadTimeToCircleSkin();
     void SaveTimeToCircleSkin();
-
-
 }
